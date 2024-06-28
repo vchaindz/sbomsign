@@ -6,8 +6,8 @@ This project provides a Node.js script to securely sign and verify Software Bill
 ## Features
 
 - **RSA Key Generation:** Automatically generate RSA public and private keys.
-- **SBOM Signing:** Sign an SBOM using the generated private key to ensure its integrity and authenticity.
-- **SBOM Verification:** Verify the signature of an SBOM using the corresponding public key to ensure it has not been tampered with.
+- **SBOM Signing:** Sign an SBOM using a newly generated private key or an existing private key to ensure its integrity and authenticity.
+- **SBOM Verification:** Verify the signature of an SBOM using the corresponding public key or an existing public key to ensure it has not been tampered with.
 
 ## Prerequisites
 
@@ -36,23 +36,25 @@ To set up this project locally, follow these steps:
 
 ### Generating Keys and Signing an SBOM
 
-1. **Generate Keys:**
-   Run the script with the option to generate keys which will produce `private.key` and `public.key` files.
+1. **Generate and Sign an SBOM:**
+   Use this command to generate new RSA keys and sign an SBOM file. This generates `private.key` and `public.key` in your specified output directory and uses the private key to sign the SBOM.
    ```bash
-   node sign-sbom.js --generate-key-and-sign --sbom path/to/your/sbom.json --output path/to/output/signed-sbom.json
+   node sign-sbom.js --generate-and-sign --sbom path/to/your/sbom.json --output path/to/output/signed-sbom.json
    ```
 
-2. **Sign an SBOM:**
-   Provide the path to the SBOM you wish to sign and specify the output file for the signed SBOM.
+### Signing an SBOM with an Existing Private Key
+
+1. **Sign an SBOM:**
+   If you already have a private key and want to use it to sign an SBOM, specify the path to your private key with the `--private-key` option.
    ```bash
-   node sign-sbom.js --generate-key-and-sign --sbom path/to/your/sbom.json --output path/to/output/signed-sbom.json
+   node sign-sbom.js --sign --sbom path/to/your/sbom.json --output path/to/output/signed-sbom.json --private-key path/to/your/private.key
    ```
 
 ### Verifying an SBOM Signature
 
-To verify the signature of an SBOM file:
-```bash
-node sign-sbom.js --verify --sbom path/to/signed-sbom.json
-```
+1. **Verify an SBOM:**
+   To verify the signature of an SBOM file, specify the path to the public key used for signing or another trusted public key.
+   ```bash
+   node sign-sbom.js --verify --sbom path/to/signed-sbom.json --public-key path/to/public.key
+   ```
 
-This command will check the signed SBOM using the public key to ensure its integrity.
