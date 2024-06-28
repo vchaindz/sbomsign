@@ -56,15 +56,3 @@ node sign-sbom.js --verify --sbom path/to/signed-sbom.json
 ```
 
 This command will check the signed SBOM using the public key to ensure its integrity.
-
-## Contributing
-
-Contributions to this project are welcome! Please create a branch for each feature or fix, submit it as a pull request, and it will be reviewed.
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Contact
-
-For support or queries, please email us at support@example.com.
