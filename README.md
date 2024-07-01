@@ -1,7 +1,8 @@
 
 # SBOM Signing and Verification Tool
 
-This project provides a Node.js script to securely sign and verify Software Bill of Materials (SBOM) files using RSA keys and JSON Web Signatures (JWS). It aims to enhance the security of software supply chains through robust integrity checks.
+This project provides a Node.js script to securely sign and verify CycloneDX Software Bill of Materials (SBOM) files using RSA keys and JSON Web Signatures (JWS). It aims to enhance the security of software supply chains through robust integrity checks. While most SBOM signature tools are limited to XML files, this tool is especially meant to sign JSON SBOMs.
+The idea came up after checking out https://github.com/CycloneDX/cdxgen
 
 ## Features
 
